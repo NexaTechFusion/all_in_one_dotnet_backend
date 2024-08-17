@@ -11,14 +11,24 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Features\Product\Commands\" />
+      <Folder Include="Features\Product\DTOs\" />
+      <Folder Include="Features\Product\ServiceInterfaces\" />
+      <Folder Include="Features\Product\Validations\" />
       <Folder Include="Shared\Commands\" />
-      <Folder Include="Shared\DTOs\" />
       <Folder Include="Shared\Queries\" />
       <Folder Include="Shared\Serviceinterfaces\" />
-      <Folder Include="Shared\Validations\" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
+      <PackageReference Include="FluentValidation" Version="11.9.2" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
+      <PackageReference Include="Mediator.Abstractions" Version="2.1.7" />
+      <PackageReference Include="Mediator.SourceGenerator" Version="2.1.7">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="MediatR" Version="12.4.0" />
     </ItemGroup>
 
