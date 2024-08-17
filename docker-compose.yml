@@ -1,0 +1,40 @@
+﻿version: '3'
+services:
+
+  aio-dotnet-webapi:
+    build:
+      dockerfile: "src/API/AIO.Web.Api/Dockerfile"
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 5s
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 5
+        window: 60s
+    hostname: aio-dotnet-webapi
+    env_file:
+      - .env
+    networks:
+      - default
+    depends_on:
+      - redis
+  
+  redis:
+    image: 'redis'
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 3s
+        max_attempts: 5
+        window: 60s
+    hostname: 'redis'
+    networks:
+      - default
+    environment:
+      REDIS_REPLICATION_MODE: "master"
+
+
+

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Filters\" />
+      <Folder Include="Middlewares\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Core\AIO.Application\AIO.Application.csproj" />
+      <ProjectReference Include="..\..\Shared\AIO.SharedKernel\AIO.SharedKernel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Asp.Versioning.Mvc" Version="8.1.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
+      <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="8.0.8" />
+      <PackageReference Include="Pluralize.NET" Version="1.0.2" />
+      <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
+      <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="6.7.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.7.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.7.0" />
+    </ItemGroup>
+
+</Project>
