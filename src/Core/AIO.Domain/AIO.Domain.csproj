@@ -9,11 +9,6 @@
     <ItemGroup>
       <Folder Include="Product\BusinessLogic\" />
       <Folder Include="Product\DomainEvents\" />
-      <Folder Include="Product\ValueObjects\" />
-      <Folder Include="Shared\BusinessLogic\" />
-      <Folder Include="Shared\DomainEvents\" />
-      <Folder Include="Shared\Entities\" />
-      <Folder Include="Shared\ValueObjects\" />
     </ItemGroup>
 
 </Project>

@@ -22,10 +22,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Core\AIO.Application\AIO.Application.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\AIO.Infrastructure.Persistence\AIO.Infrastructure.Persistence.csproj" />
       <ProjectReference Include="..\AIO.WebFramework\AIO.WebFramework.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.7.0" />
     </ItemGroup>
 
