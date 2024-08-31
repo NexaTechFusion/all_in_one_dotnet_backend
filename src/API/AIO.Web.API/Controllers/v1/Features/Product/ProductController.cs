@@ -1,4 +1,5 @@
-﻿using AIO.Application.Features.Product.Queries.GetList;
+﻿using AIO.Application.Features.Product.Commands.Add;
+using AIO.Application.Features.Product.Queries.GetList;
 using AIO.Application.Shared.DTOs.OperationResult;
 using AIO.WebFramework.BaseController;
 using Asp.Versioning;
@@ -27,17 +28,18 @@ public class ProductController(IMediator mediator) : BaseController
         OperationResult<List<GetListProductQueryResult>> result =
             await mediator.Send(query);
         return OperationResult(result);
+    }
 
-        // var productList = new List<Domain.Product.Entities.Product>
-        // {
-        //     new Domain.Product.Entities.Product()
-        //     {
-        //         Id = 1,
-        //         Name = "Product",
-        //         Type = "Product",
-        //         Quantity = 10
-        //     }
-        // };
-        // return productList;
+    /// <summary>
+    /// Add new City
+    /// </summary>
+    /// <param name="command">AddProductCommand</param>
+    /// <returns></returns>
+    [HttpPost]
+    [Display(Name = "Add new product")]
+    public async Task<IActionResult> AddProduct(AddProductCommand command)
+    {
+        OperationResult<AddProductCommandResult> result = await mediator.Send(command);
+        return OperationResult(result);
     }
 }

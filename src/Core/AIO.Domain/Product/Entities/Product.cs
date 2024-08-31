@@ -1,8 +1,9 @@
-﻿namespace AIO.Domain.Product.Entities;
+﻿using AIO.Domain.Shared.Entities;
 
-public class Product
+namespace AIO.Domain.Product.Entities;
+
+public class Product: BaseEntity
 {
-    public int Id { get; set; }
     public string Name { get; set; }
     public string Type { get; set; }
     public int Quantity { get; set; }

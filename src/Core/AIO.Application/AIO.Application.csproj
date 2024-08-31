@@ -11,7 +11,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\Product\Commands\" />
       <Folder Include="Features\Product\DTOs\" />
       <Folder Include="Features\Product\ServiceInterfaces\" />
       <Folder Include="Features\Product\Validations\" />

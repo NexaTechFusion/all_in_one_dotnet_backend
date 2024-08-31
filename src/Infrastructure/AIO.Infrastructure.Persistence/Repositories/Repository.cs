@@ -9,6 +9,7 @@ namespace AIO.Infrastructure.Persistence.Repositories;
 
 internal class Repository<TEntity> : BaseAsyncRepository<TEntity>, IRepository<TEntity> where TEntity : class, IEntity
 {
+
     public Repository(ApplicationDbContext dbContext, bool onlyRead) : base(dbContext, onlyRead)
     {
     }
@@ -120,5 +121,31 @@ internal class Repository<TEntity> : BaseAsyncRepository<TEntity>, IRepository<T
     public void Delete(TEntity entity)
     {
         DbContext.Set<TEntity>().Remove(entity);
+    }
+    
+
+    /// <summary>
+    /// count
+    /// </summary>
+    /// <param name="where"></param>
+    /// <param name="includesList"></param>
+    /// <returns></returns>
+    public async Task<int> Count(Expression<Func<TEntity, bool>> where, List<string> includesList = null)
+    {
+        IQueryable<TEntity> query = Table;
+        if (where != null)
+            query = query.Where(where);
+        if (includesList is not null)
+            query = includesList.Aggregate(query, (current, include) => current.Include(include));
+        return await query.CountAsync();
+    }
+
+    /// <summary>
+    /// multiple add
+    /// </summary>
+    /// <param name="entities"></param>
+    public async Task MultiAdd(TEntity[] entities)
+    {
+        await base.MultiAddAsync(entities);   
     }
 }

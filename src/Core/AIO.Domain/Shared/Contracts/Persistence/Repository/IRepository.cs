@@ -65,4 +65,19 @@ public interface IRepository<TEntity> where TEntity : class, IEntity
     /// <param name="entity"></param>
     /// <returns></returns>
     void Delete(TEntity entity);
+    
+    /// <summary>
+    /// Count items
+    /// </summary>
+    /// <param name="where"></param>
+    /// <param name="includesList"></param>
+    /// <returns></returns>
+    Task<int> Count(Expression<Func<TEntity, bool>> where, List<string> includesList = null);
+    
+    /// <summary>
+    /// Multiple Add
+    /// </summary>
+    /// <param name="entities"></param>
+    /// <returns></returns>
+    Task MultiAdd(TEntity[] entities);
 }

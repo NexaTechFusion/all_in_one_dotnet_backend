@@ -33,6 +33,10 @@ public static class SwaggerConfigurationExtensions
                 Type = "string",
                 Format = "date"
             });
+            #region Filters
+
+            // Use enum members instead of int
+            options.SchemaFilter<EnumSchemaFilter>();
 
             #region Versioning
 
@@ -46,19 +50,21 @@ public static class SwaggerConfigurationExtensions
             options.DocInclusionPredicate((docName, apiDesc) =>
             {
                 if (!apiDesc.TryGetMethodInfo(out MethodInfo methodInfo)) return false;
-
+            
                 IEnumerable<ApiVersion> versions = methodInfo.DeclaringType!
                     .GetCustomAttributes<ApiVersionAttribute>(true)
                     .SelectMany(attr => attr.Versions);
-
+            
                 return versions.Any(v => $"v{v.ToString()}" == docName);
             });
 
             #endregion
+            
+            #endregion
         });
     }
 
-    public static void UseSwaggerAndUI(this IApplicationBuilder app)
+    public static void UseSwaggerAndUi(this IApplicationBuilder app)
     {
         ArgumentNullException.ThrowIfNull(app, nameof(app));
 
@@ -82,7 +88,6 @@ public static class SwaggerConfigurationExtensions
 
             //// Network
             options.EnableValidator();
-            options.SupportedSubmitMethods(SubmitMethod.Get);
 
             #endregion
         });

@@ -36,5 +36,17 @@ services:
     environment:
       REDIS_REPLICATION_MODE: "master"
 
-
-
+  mssql:
+    image: 'mcr.microsoft.com/mssql/server:2022-latest'
+    deploy:
+      restart_policy:
+        condition: any
+        delay: 3s
+        max_attempts: 5
+        window: 60s
+    hostname: 'mssql'
+    networks:
+      - default
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "1234@Abcd"

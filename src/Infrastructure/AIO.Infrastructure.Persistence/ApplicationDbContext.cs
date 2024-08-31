@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace AIO.Infrastructure.Persistence;
 
-public class ApplicationDbContext(DbContextOptions options) : DbContext
+public class ApplicationDbContext(DbContextOptions options) : DbContext(options)
 {
     public DbSet<Product> Products { get; set; }
 

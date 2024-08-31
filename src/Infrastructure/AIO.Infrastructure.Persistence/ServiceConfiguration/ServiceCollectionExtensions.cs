@@ -1,6 +1,7 @@
 ﻿using AIO.Domain.Shared.Contracts.Persistence;
 using AIO.Infrastructure.Persistence.Repositories.Common;
 using AIO.Infrastructure.Persistence;
+using AIO.Infrastructure.Persistence.SeedDatabaseService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +14,8 @@ public static class ServiceCollectionExtensions
         IConfiguration configuration)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+        services.AddScoped<ISeedDataBase, SeedDataBase>();
+        
         services.AddDbContextPool<ApplicationWriteDbContext>(options =>
         {
             options.UseSqlServer(configuration.GetConnectionString("SqlServer"),
