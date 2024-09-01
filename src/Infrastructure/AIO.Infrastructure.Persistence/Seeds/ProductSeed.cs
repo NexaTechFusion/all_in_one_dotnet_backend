@@ -10,24 +10,26 @@ public class ProductSeed(IUnitOfWork unitOfWork)
     public async Task Run()
     {
         IRepository<Product> productRepository = unitOfWork.GetRepository<Product>();
-        var products = new Product[]
+        int productCount = await productRepository.Count(null);
+        if (productCount <= 0)
         {
-            new ()
+            var products = new Product[]
             {
-                Name = "Sample Product 1",
-                Quantity = 12,
-                Type = "Book"
-            },
-            new ()
-            {
-                Name = "Sample Product 2",
-                Quantity = 10,
-                Type = "Pen"
-            }
-        };
-        await productRepository.MultiAdd(products);
-        await unitOfWork.CommitAsync();
-
-
+                new()
+                {
+                    Name = "Sample Product 1",
+                    Quantity = 12,
+                    Type = "Book"
+                },
+                new()
+                {
+                    Name = "Sample Product 2",
+                    Quantity = 10,
+                    Type = "Pen"
+                }
+            };
+            await productRepository.MultiAdd(products);
+            await unitOfWork.CommitAsync();
+        }
     }
 }

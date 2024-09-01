@@ -10,7 +10,7 @@ public interface IRepository<TEntity> where TEntity : class, IEntity
     /// </summary>
     /// <param name="where"></param>
     /// <returns></returns>
-    Task<List<TEntity>> Query(Expression<Func<TEntity, bool>> where);
+    Task<List<TEntity>> Query(Expression<Func<TEntity, bool>>? where);
 
     /// <summary>
     /// Query a list of items

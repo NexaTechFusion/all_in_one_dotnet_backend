@@ -19,7 +19,7 @@ internal class Repository<TEntity> : BaseAsyncRepository<TEntity>, IRepository<T
     /// </summary>
     /// <param name="where"></param>
     /// <returns></returns>
-    public async Task<List<TEntity>> Query(Expression<Func<TEntity, bool>> where)
+    public async Task<List<TEntity>> Query(Expression<Func<TEntity, bool>>? where)
     {
         IQueryable<TEntity> query = Table;
         if (where != null)
