@@ -1,9 +1,11 @@
 using AIO.Application.Shared.ServiceConfiguration;
+using AIO.Infrastructure.Identity.ServiceConfiguration;
 using AIO.Infrastructure.Persistence;
 using AIO.Infrastructure.Persistence.SeedDatabaseService;
 using AIO.Infrastructure.Persistence.ServiceConfiguration;
 using AIO.WebFramework.Configurations.Swagger;
 using AIO.WebFramework.ServiceConfiguration;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,14 +17,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger();
 builder.Services.AddApplicationServices()
     .AddPersistenceServices(configuration)
+    .AddIdentityServices()
     .AddWebFrameworkServices();
+
 
 
 WebApplication app = builder.Build();
 await using AsyncServiceScope scope = app.Services.CreateAsyncScope();
 
 
-#region Seeding and creating database
+#region Seeding and migration in database
 
 try
 {

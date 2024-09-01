@@ -22,6 +22,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Core\AIO.Application\AIO.Application.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\AIO.Infrastructure.Identity\AIO.Infrastructure.Identity.csproj" />
       <ProjectReference Include="..\..\Infrastructure\AIO.Infrastructure.Persistence\AIO.Infrastructure.Persistence.csproj" />
       <ProjectReference Include="..\AIO.WebFramework\AIO.WebFramework.csproj" />
     </ItemGroup>
